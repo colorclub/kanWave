@@ -1,3 +1,6 @@
+// fork getUserMedia for multiple browser versions, for those
+// that need prefixes
+
 navigator.getUserMedia = (navigator.getUserMedia ||
                           navigator.webkitGetUserMedia ||
                           navigator.mozGetUserMedia ||
@@ -10,6 +13,10 @@ var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var voiceSelect = document.getElementById("voice");
 var source;
 var stream;
+
+// grab the mute button to use below
+
+var mute = document.querySelector('.mute');
 
 //set up the different audio nodes we will use for the app
 
@@ -77,7 +84,7 @@ var intendedWidth = document.querySelector('.wrapper').clientWidth;
 canvas.setAttribute('width',intendedWidth);
 
 var visualSelect = document.getElementById("visual");
-
+console.log(visualSelect.value)
 var drawVisual;
 
 //main block for doing the audio recording
@@ -101,7 +108,6 @@ if (navigator.getUserMedia) {
          gainNode.connect(audioCtx.destination);
 
       	 visualize();
-         voiceChange();
 
       },
 
@@ -117,11 +123,6 @@ if (navigator.getUserMedia) {
 function visualize() {
   WIDTH = canvas.width;
   HEIGHT = canvas.height;
-
-
-  var visualSetting = visualSelect.value;
-  console.log(visualSetting);
-
   analyser.fftSize = 256;
   var bufferLength = analyser.frequencyBinCount;
   console.log(bufferLength);
@@ -149,13 +150,12 @@ function visualize() {
 
       x += barWidth + 1;
     }
-
-    draw();
-
+  };
+  draw();
 }
 
 // event listeners to change visualize and voice settings
+
 visualSelect.onchange = function() {
-  window.cancelAnimationFrame(drawVisual);
   visualize();
 }
