@@ -135,7 +135,7 @@ function visualize() {
 
     analyser.getByteFrequencyData(dataArray);
 
-    canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+    canvasCtx.fillStyle = 'black';
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
     var barWidth = (WIDTH / bufferLength) * 2.5;
@@ -144,10 +144,28 @@ function visualize() {
 
     for(var i = 0; i < bufferLength; i++) {
       barHeight = dataArray[i];
-
-      canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
-      canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
-
+      if (i < 7) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 14) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',127,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 21) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 28) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 35) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,255)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 42) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,130)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,211)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      }
       x += barWidth + 1;
     }
   };
