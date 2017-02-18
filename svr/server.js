@@ -13,21 +13,6 @@ app.get('/', function(request, response) {
   response.sendfile('client/index.html');
 });
 
-app.post('/search', function(req, res) {
-  var options = {
-    method: 'GET',
-    url: 'https://api.cognitive.microsoft.com/bing/v5.0/search?q=' + req.body.query +'&count=20  ',
-    headers: {
-      'Ocp-Apim-Subscription-Key': process.env.key || require('./config/key.js')
-    }
-  }
-  request(options, function(error, response, body) {
-    if(error) console.log("THERE IS AN ERROR IN SERVER REQUEST")
-    res.json(response);
-  });
-
-});
-
 middleware(app, express);
 
 app.listen(port, function(err) {
