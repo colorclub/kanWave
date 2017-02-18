@@ -1,6 +1,6 @@
-/*body {
+body {
 	background-color: black;
-}*/
+}
 
 #visual {
   border-top: 1px solid black;
@@ -11,6 +11,7 @@
   left: 0;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
 			0 3px 4px rgba(0,0,0,0.7);
+  z-index: -1;
 }
 
 #visual_2 {
@@ -23,6 +24,7 @@
   transform: rotate(180deg);
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
 			0 3px 4px rgba(0,0,0,0.7);
+  z-index: -1;
 }
 
 img {

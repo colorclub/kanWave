@@ -74,7 +74,7 @@ ajaxRequest.onload = function() {
 
 ajaxRequest.send();
 
-// set up canvas context for visualizer
+// set up canvas2 context for visualizer
 
 var canvas = document.querySelector('.visualizer');
 var canvasCtx = canvas.getContext("2d");
@@ -176,4 +176,207 @@ function visualize() {
 
 visualSelect.onchange = function() {
   visualize();
+}
+
+var canvas = document.querySelector('.visualizer');
+var canvasCtx = canvas.getContext("2d");
+
+var intendedWidth = document.querySelector('.wrapper').clientWidth;
+
+canvas.setAttribute('width',intendedWidth);
+
+var visualSelect = document.getElementById("visual");
+console.log(visualSelect.value)
+var drawVisual;
+
+//main block for doing the audio recording
+
+if (navigator.getUserMedia) {
+   console.log('getUserMedia supported.');
+   navigator.getUserMedia (
+      // constraints - only audio needed for this app
+      {
+         audio: true
+      },
+
+      // Success callback
+      function(stream) {
+         source = audioCtx.createMediaStreamSource(stream);
+         source.connect(analyser);
+         analyser.connect(distortion);
+         distortion.connect(biquadFilter);
+         biquadFilter.connect(convolver);
+         convolver.connect(gainNode);
+         gainNode.connect(audioCtx.destination);
+
+      	 visualize();
+
+      },
+
+      // Error callback
+      function(err) {
+         console.log('The following gUM error occured: ' + err);
+      }
+   );
+} else {
+   console.log('getUserMedia not supported on your browser!');
+}
+
+function visualize() {
+  WIDTH = canvas.width;
+  HEIGHT = canvas.height;
+  analyser.fftSize = 256;
+  var bufferLength = analyser.frequencyBinCount;
+  console.log(bufferLength);
+  var dataArray = new Uint8Array(bufferLength);
+
+  canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+  function draw() {
+    drawVisual = requestAnimationFrame(draw);
+
+    analyser.getByteFrequencyData(dataArray);
+
+    canvasCtx.fillStyle = 'black';
+    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barHeight;
+    var x = 0;
+
+    for(var i = 0; i < bufferLength; i++) {
+      barHeight = dataArray[i];
+      if (i < 7) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 14) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',127,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 21) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 28) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 35) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,255)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 42) {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,130)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else {
+        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',0,211)';
+        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      }
+      x += barWidth + 1;
+    }
+  };
+  draw();
+}
+
+// event listeners to change visualize and voice settings
+
+
+//SECOND WAVE@@@@@@@@@@@@@@@@@@@@@
+
+var canvas2 = document.querySelector('.visualizer2');
+var secondBox = canvas2.getContext("2d");
+
+var intendedWidth = document.querySelector('.wrapper').clientWidth;
+
+canvas2.setAttribute('width',intendedWidth);
+
+var visualSelect2 = document.getElementById("visual");
+console.log(visualSelect2.value)
+var drawVisual2;
+
+//main block for doing the audio recording
+
+if (navigator.getUserMedia) {
+   console.log('getUserMedia supported.');
+   navigator.getUserMedia (
+      // constraints - only audio needed for this app
+      {
+         audio: true
+      },
+
+      // Success callback
+      function(stream) {
+         source = audioCtx.createMediaStreamSource(stream);
+         source.connect(analyser);
+         analyser.connect(distortion);
+         distortion.connect(biquadFilter);
+         biquadFilter.connect(convolver);
+         convolver.connect(gainNode);
+         gainNode.connect(audioCtx.destination);
+
+      	 visualize2();
+
+      },
+
+      // Error callback
+      function(err) {
+         console.log('The following gUM error occured: ' + err);
+      }
+   );
+} else {
+   console.log('getUserMedia not supported on your browser!');
+}
+
+function visualize2() {
+  WIDTH = canvas2.width;
+  HEIGHT = canvas2.height;
+  analyser.fftSize = 256;
+  var bufferLength = analyser.frequencyBinCount;
+  console.log(bufferLength);
+  var dataArray = new Uint8Array(bufferLength);
+
+  secondBox.clearRect(0, 0, WIDTH, HEIGHT);
+
+  function draw() {
+    drawVisual2 = requestAnimationFrame(draw);
+
+    analyser.getByteFrequencyData(dataArray);
+
+    secondBox.fillStyle = 'black';
+    secondBox.fillRect(0, 0, WIDTH, HEIGHT);
+
+    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barHeight;
+    var x = 0;
+
+    for(var i = 0; i < bufferLength; i++) {
+      barHeight = dataArray[i];
+      if (i < 7) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',0,0)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 14) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',127,0)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 21) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 28) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',255,0)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 35) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',0,255)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else if (i < 42) {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',0,130)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      } else {
+        secondBox.fillStyle = 'rgb(' + (barHeight+100) + ',0,211)';
+        secondBox.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+      }
+      x += barWidth + 1;
+    }
+  };
+  draw();
+}
+
+// event listeners to change visualize2 and voice settings
+
+visualSelect2.onchange = function() {
+  visualize2();
 }
