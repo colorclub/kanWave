@@ -15,27 +15,21 @@
 
 </head>
 <body>
-  <div class="wrapper">
-
-    <img src = "images/kanye_west.png" id = "kanye">
-
-    <canvas id="visual" class="visualizer" width="640" height="200"></canvas>
-
-    <canvas id="visual_2" class="visualizer2" width="640" height="200"></canvas>
-
+  <div id="mySidenav" class="sidenav">
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:7gsWAHLeT0w7es6FofOXk1&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:6Fr2rQkZ383FcMqFyT7yPr&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:2UJwKSBUz6rtW4QLK74kQu&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:712VoD72K500yLhhgqCyVe&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:0ptlfJfwGTy0Yvrk14JK1I&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:64aKkqxc3Ur2LYIKeS5osS&view=coverart" frameborder="0" allowtransparency="true"></iframe>
   </div>
+  <!-- <span onclick="openNav()"></span> -->
 
-<iframe src="https://embed.spotify.com/?uri=spotify:album:7gsWAHLeT0w7es6FofOXk1&view=coverart" frameborder="0" allowtransparency="true"></iframe>
-
-<iframe src="https://embed.spotify.com/?uri=spotify:album:6Fr2rQkZ383FcMqFyT7yPr&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-<iframe src="https://embed.spotify.com/?uri=spotify:album:2UJwKSBUz6rtW4QLK74kQu&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-<iframe src="https://embed.spotify.com/?uri=spotify:album:712VoD72K500yLhhgqCyVe&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-<iframe src="https://embed.spotify.com/?uri=spotify:album:0ptlfJfwGTy0Yvrk14JK1I&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-<iframe src="https://embed.spotify.com/?uri=spotify:album:64aKkqxc3Ur2LYIKeS5osS&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  <div class="wrapper">
+    <img src = "images/kanye_west.png" id = "kanye" onClick>
+    <canvas id="visual" class="visualizer" width="640" height="200"></canvas>
+    <canvas id="visual_2" class="visualizer2" width="640" height="200"></canvas>
+  </div>
 
     <!-- Below is your custom application script -->
 
@@ -49,6 +43,6 @@
 
     <!-- vanilla js file  -->
     <script src="script.js"></script>
-
+    <script src="scripts/spotifydrawer.js"></script>
   </body>
 </html>
