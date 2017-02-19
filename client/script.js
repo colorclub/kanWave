@@ -1,4 +1,3 @@
-
 let bottom = true;
 
 function bounce(singer) {
