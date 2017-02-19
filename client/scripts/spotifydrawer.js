@@ -1,12 +1,12 @@
-var element = document.getElementById("head");
-
-element.addEventListener("click",function(){
+var element = document.getElementById("headrow");
+element.addEventListener("click", function(){
     if(element.open !== true) {
       openNav();
     } else if(element.open === true) {
       closeNav();
     }
 })
+
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "260px";

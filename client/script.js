@@ -5,7 +5,7 @@ function bounce(singer) {
 	let height = screen.height - 50;
 
 	let onComplete = function() {
-		console.log('ONCOMPLETE')
+		console.log('ON COMPLETE')
 		if(bottom) {
 			height = screen.height - 150;
 			width = Math.random() * screen.width;
