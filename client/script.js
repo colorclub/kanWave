@@ -28,4 +28,3 @@ function onComplete() {
 window.onload = function() {
 	bounce("kanye");
 }
-
