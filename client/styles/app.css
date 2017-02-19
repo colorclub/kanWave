@@ -1,5 +1,6 @@
 body {
 	background-color: black;
+  position: relative;
 }
 
 #visual {
@@ -28,8 +29,8 @@ body {
 }
 
 img {
-	width: 100px;
-	height: 150px;
+  width: 10%;
+  height: 10%;
 }
 
 .sidenav {
