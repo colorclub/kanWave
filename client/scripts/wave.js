@@ -14,10 +14,6 @@ var voiceSelect = document.getElementById("voice");
 var source;
 var stream;
 
-// grab the mute button to use below
-
-var mute = document.querySelector('.mute');
-
 //set up the different audio nodes we will use for the app
 
 var analyser = audioCtx.createAnalyser();
