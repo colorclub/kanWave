@@ -2,20 +2,27 @@ let bottom = true;
 
 function bounce(singer) {
 	let width = Math.random() * screen.width;
-	let height;
+	let height = screen.height - 50;
 
-	if(bottom) {
-		height = screen.height - 25;
-		bottom = !bottom;
+	let onComplete = function() {
+		console.log('ONCOMPLETE')
+		if(bottom) {
+			height = screen.height - 150;
+			width = Math.random() * screen.width;
+			bottom = !bottom;
+		}
+		else{
+			height = 50;
+			width = Math.random() * screen.width;
+			bottom = !bottom;
+		}
+		TweenLite.to(document.getElementById(singer), 1.5, {x: width, y: height, onComplete: onComplete});
 	}
-	else{
-		height = 25;
-		bottom = !bottom;
-	}
-	TweenLite.to(document.getElementById(singer), 2.5, {x: width, y: height});
-	setInterval(function() {
-		bounce(singer);
-	}, 2700);
+	TweenLite.to(document.getElementById(singer), 1.5, {x: width, y: height, onComplete: onComplete});
+}
+
+function onComplete() {
+
 }
 
 window.onload = function() {
