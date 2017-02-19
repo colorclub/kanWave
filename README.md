@@ -1,1 +1,1 @@
-# synthesiaWheel
+# KanWave
