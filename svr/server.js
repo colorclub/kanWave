@@ -8,6 +8,8 @@ var middleware = require('./config/middleware.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '/../../node_modules')));
+app.use(express.static(path.join(__dirname, '/../../client')));
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/client/index.html');
