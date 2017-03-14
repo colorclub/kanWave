@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon svr/server",
+    "start": "node svr/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sean Ho <sean.ho.0103@gmail.com>",
