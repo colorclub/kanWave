@@ -9,15 +9,18 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../../node_modules')));
-app.use(express.static(path.join(__dirname, '/../../client')));
+app.use(express.static(path.join(__dirname, '/../client')));
+
+const pathTo = __dirname + '/../../client/index.html';
 
 app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/client/index.html');
+  (__dirname)
+  response.sendFile(path.join(__dirname, '/../client/index.html'));
 });
 
 app.listen(port, function(err) {
   if(err) {
-    return console.log('Error occurred: ', err);
+    return ('Error occurred: ', err);
   }
   console.log('Server is listening on port ', port);
 })

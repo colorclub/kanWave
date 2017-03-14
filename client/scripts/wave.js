@@ -80,13 +80,11 @@ var intendedWidth = document.querySelector('.wrapper').clientWidth;
 canvas.setAttribute('width',intendedWidth);
 
 var visualSelect = document.getElementById("visual");
-console.log(visualSelect.value)
 var drawVisual;
 
 //main block for doing the audio recording
 
 if (navigator.getUserMedia) {
-   console.log('getUserMedia supported.');
    navigator.getUserMedia (
       // constraints - only audio needed for this app
       {
@@ -109,11 +107,11 @@ if (navigator.getUserMedia) {
 
       // Error callback
       function(err) {
-         console.log('The following gUM error occured: ' + err);
+         ('The following gUM error occured: ' + err);
       }
    );
 } else {
-   console.log('getUserMedia not supported on your browser!');
+   ('getUserMedia not supported on your browser!');
 }
 
 function visualize() {
@@ -121,7 +119,7 @@ function visualize() {
   HEIGHT = canvas.height;
   analyser.fftSize = 256;
   var bufferLength = analyser.frequencyBinCount;
-  console.log(bufferLength);
+  (bufferLength);
   var dataArray = new Uint8Array(bufferLength);
 
   canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -182,13 +180,11 @@ var intendedWidth = document.querySelector('.wrapper').clientWidth;
 canvas.setAttribute('width',intendedWidth);
 
 var visualSelect = document.getElementById("visual");
-console.log(visualSelect.value)
 var drawVisual;
 
 //main block for doing the audio recording
 
 if (navigator.getUserMedia) {
-   console.log('getUserMedia supported.');
    navigator.getUserMedia (
       // constraints - only audio needed for this app
       {
@@ -211,11 +207,11 @@ if (navigator.getUserMedia) {
 
       // Error callback
       function(err) {
-         console.log('The following gUM error occured: ' + err);
+         ('The following gUM error occured: ' + err);
       }
    );
 } else {
-   console.log('getUserMedia not supported on your browser!');
+   ('getUserMedia not supported on your browser!');
 }
 
 function visualize() {
@@ -223,7 +219,6 @@ function visualize() {
   HEIGHT = canvas.height;
   analyser.fftSize = 256;
   var bufferLength = analyser.frequencyBinCount;
-  console.log(bufferLength);
   var dataArray = new Uint8Array(bufferLength);
 
   canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -283,13 +278,11 @@ var intendedWidth = document.querySelector('.wrapper').clientWidth;
 canvas2.setAttribute('width',intendedWidth);
 
 var visualSelect2 = document.getElementById("visual");
-console.log(visualSelect2.value)
 var drawVisual2;
 
 //main block for doing the audio recording
 
 if (navigator.getUserMedia) {
-   console.log('getUserMedia supported.');
    navigator.getUserMedia (
       // constraints - only audio needed for this app
       {
@@ -312,11 +305,11 @@ if (navigator.getUserMedia) {
 
       // Error callback
       function(err) {
-         console.log('The following gUM error occured: ' + err);
+         ('The following gUM error occured: ' + err);
       }
    );
 } else {
-   console.log('getUserMedia not supported on your browser!');
+   ('getUserMedia not supported on your browser!');
 }
 
 function visualize2() {
@@ -324,7 +317,6 @@ function visualize2() {
   HEIGHT = canvas2.height;
   analyser.fftSize = 256;
   var bufferLength = analyser.frequencyBinCount;
-  console.log(bufferLength);
   var dataArray = new Uint8Array(bufferLength);
 
   secondBox.clearRect(0, 0, WIDTH, HEIGHT);
