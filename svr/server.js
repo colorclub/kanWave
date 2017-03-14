@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-  response.sendFile('client/index.html');
+  response.sendFile(__dirname + '/client/index.html');
 });
 
 middleware(app, express);
